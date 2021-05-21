@@ -2,8 +2,8 @@ This project was done as part of Corporate user directory project to familiarize
 The initial implementation was done based on a youtube tutorial by another github user hshar94.
 
 The initial architecture was modified to store user credentials using Amazon Cognito and Okta user authentication. Amazon Cloudfront is also used for secure 
-connection. Here AWS-EC2 acts as server and RDS is used for storage of employee table with details like name, salary, email, vacation balance.. etc and S3 for 
-the image of the employee. The application webpage provides customized views for employees or hr/admin. 
+connection. Here AWS-EC2 acts as server and RDS is used for storing employee table with details like name, salary, email, vacation balance.. etc and S3 for 
+the image file of the employee. The application webpage provides customized views for employees or hr/admin. 
 The project is mainly aimed at understanding how different AWS services interact with each other.
 
 Initial installation required:
