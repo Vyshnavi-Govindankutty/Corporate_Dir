@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+	<center>
+	<font color="black" size="4" style="font-family: avenir">
+    <h1 style="color: Orange;font-size:40pt;"><b>Clairvoyant</b></h1>
+</center>
+<left>
+<form method="post" action="/Logout">
+<button type="submit" name="submit" value="Logout" class="btn btn-primary btn-block" style="background-color:#aedc8a;color:rgb(40,140,38);">Logout</button></form></left>
+<table style="width:100%">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th> 
+    <th>Location</th>
+    <th>Salary</th>
+    <th>Medical Plan</th>
+    <th>Vacation Hours Left</th>
+
+
+
+  </tr>
+  <tr>
+    <td>{{f_name}}</td>
+    <td>{{l_name}}</td> 
+    <td>{{location}}</td>
+    <td>{{salary}}</td>
+    <td>{{Med_plan}}</td>
+    <td>{{Vac_hours_left}}</td>
+  </tr>
+</table>
+</body>
+
+</html>
