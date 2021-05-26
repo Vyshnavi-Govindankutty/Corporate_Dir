@@ -24,9 +24,6 @@ variable "iam_role"{
 	
 }
 
-variable "rt_53_zone"{
-	type=string
-}
 
 variable "rds_name"{
 	type=string
@@ -45,5 +42,9 @@ variable "db_password"{
 variable key{
 	type=string
 }
+
+variable app_client_name{
+	type=string
+} 
 
 

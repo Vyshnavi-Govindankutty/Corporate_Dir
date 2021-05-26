@@ -138,6 +138,30 @@ resource "aws_db_instance" "corp_db"{
 }
 
 
+//ROUTE 53
+
+resource "aws_route53_zone" "corp_route"{
+name="vg-corp-dir.tk"
+
+}
+
+//route_53_record
+
+resource "aws_route53_record" "corp_rec1"{
+zone_id = aws_route53_zone.corp_route.zone_id
+name="vg-corp-dir.tk"
+type="A"
+records=[aws_instance.corp_dir_instance.public_ip]
+
+}
+
+resource "aws_route53_record" "corp_rec1"{
+zone_id = aws_route53_zone.corp_route.zone_id
+name="vg-corp-dir.tk"
+type="A"
+records=[aws_instance.corp_dir_instance.public_ip]
+
+}
 
 
 //COMPUTE-INSTANCE-PROFILE
@@ -162,6 +186,9 @@ resource "aws_instance" "corp_dir_instance"{
 
 
 
+
+
+
 //VPC
 data "aws_vpc" "default"{
   default=true
@@ -174,16 +201,18 @@ data "aws_iam_role" "corp_role"{
 }
 
 
-//ROUTE-53
-data "aws_route53_zone" "corp_53"{
-	name=var.rt_53_zone
-}
 
 
 //USER-POOL
 data "aws_cognito_user_pools" "corp_user_pool"{
 
 name=var.cognito_user_pool_name
+}
+
+data "aws_cognito_user_pool_client" "client"{
+name=var.app_client_name
+callback_urls=aws_cloudfront_distribution.corp_cloudfront.domain_name
+
 }
 
 
