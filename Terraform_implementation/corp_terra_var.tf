@@ -15,15 +15,15 @@ variable "aws_instance_name"{
 	type=string	
 }
 
-variable "cognito_user_pool_name"{
-	type=string
-}
 
 variable "iam_role"{
 	type=string
 	
 }
 
+variable "rt_53_zone"{
+	type=string
+}
 
 variable "rds_name"{
 	type=string
@@ -42,9 +42,5 @@ variable "db_password"{
 variable key{
 	type=string
 }
-
-variable app_client_name{
-	type=string
-} 
 
 

@@ -71,7 +71,7 @@ resource "aws_security_group" "corp_dir_sc"{
 
 
 //CLOUDFRONT DISTRIBUTION
-resource "aws_cloudfront_distribution" "corp_cloudfrnt"{
+resource "aws_cloudfront_distribution" "corp_cloudfront"{
 	enabled=true
 	is_ipv6_enabled=true
 	
@@ -138,30 +138,6 @@ resource "aws_db_instance" "corp_db"{
 }
 
 
-//ROUTE 53
-
-resource "aws_route53_zone" "corp_route"{
-name="vg-corp-dir.tk"
-
-}
-
-//route_53_record
-
-resource "aws_route53_record" "corp_rec1"{
-zone_id = aws_route53_zone.corp_route.zone_id
-name="vg-corp-dir.tk"
-type="A"
-records=[aws_instance.corp_dir_instance.public_ip]
-
-}
-
-resource "aws_route53_record" "corp_rec1"{
-zone_id = aws_route53_zone.corp_route.zone_id
-name="vg-corp-dir.tk"
-type="A"
-records=[aws_instance.corp_dir_instance.public_ip]
-
-}
 
 
 //COMPUTE-INSTANCE-PROFILE
@@ -184,7 +160,21 @@ resource "aws_instance" "corp_dir_instance"{
 
 
 
+//ROUTE53
 
+resource "aws_route53_zone" "corp_route"{
+name="vg-corp-dir.tk"
+
+}
+
+resource "aws_route53_record" "corp_rec_1"{
+zone_id=aws_route53_zone.corp_route.zone_id
+name="vg-corp-dir.tk"
+type="A"
+ttl="30"
+records=[aws_instance.corp_dir_instance.public_ip]
+
+}
 
 
 
@@ -203,22 +193,22 @@ data "aws_iam_role" "corp_role"{
 
 
 
-//USER-POOL
-data "aws_cognito_user_pools" "corp_user_pool"{
-
-name=var.cognito_user_pool_name
-}
-
-data "aws_cognito_user_pool_client" "client"{
-name=var.app_client_name
-callback_urls=aws_cloudfront_distribution.corp_cloudfront.domain_name
+output "aws_instance_public"{
+description="public ip address-instance"
+value =aws_instance.corp_dir_instance.public_ip
 
 }
 
+output "cloudnet"{
+description="cloudfront domain"
+value=aws_cloudfront_distribution.corp_cloudfront.domain_name
+}
 
 
-/*output "rds_instance"{
-value =var.db_username
-}*/
+output "rds_instance"{
+sensitive=true
+value=var.db_password
+description="reds_password"
+}
 
 
