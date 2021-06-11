@@ -1,4 +1,4 @@
-customhost ="terraform-20210527162654652700000004.cgyhh9dtkjga.us-east-2.rds.amazonaws.com"
+customhost ="terraform-20210611154441795100000004.cgyhh9dtkjga.us-east-2.rds.amazonaws.com"
 customuser="admin"
 custompass="Mydatabase1$"
 customdb="emp"
